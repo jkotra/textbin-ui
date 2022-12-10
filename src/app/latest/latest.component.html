@@ -1,0 +1,17 @@
+<div *ngIf="this.latest_pastes.length > 0 else nothing" class="m-2 sidebar flex-grow-1">
+    <h4><i class="bi bi-lightning-charge-fill golden"></i> Latest Pastes </h4>
+    <hr />
+    <ul>
+        <li *ngFor="let p of this.latest_pastes">
+            <a [routerLink]="'/uuid/' + p.uuid"> {{p.title}} </a>
+            <br />
+            <span class="desc">{{ this.wrap(p.text) }}</span>
+        </li>
+    </ul>
+</div>
+
+<ng-template #nothing>
+    <div class="m-2">
+        <h1>Nothing here!</h1>
+    </div>
+</ng-template>

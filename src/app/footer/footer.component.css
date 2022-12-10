@@ -1,0 +1,13 @@
+.footer {
+    margin-top: auto;
+    background-color: rgb(50, 39, 60);
+    font-family: 'Poppins', sans-serif;
+}
+
+.heart {
+    color: red;
+}
+
+.sub-footer {
+    font-size: small;
+}

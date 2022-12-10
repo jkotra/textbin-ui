@@ -1,0 +1,13 @@
+.sidebar {
+    padding: 1rem;
+    border: 1px solid black;
+    background-color: rgb(245, 245, 245)
+}
+
+.desc {
+    color: gray;
+}
+
+.golden {
+    color: gold;
+}

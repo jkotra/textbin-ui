@@ -1,0 +1,17 @@
+<div class="container mb-4 d-flex">
+    <form [formGroup]="this.form" class="flex-grow-1">
+        <input class="form-control mt-2 mb-2" rows="2" type="text" placeholder="Title" formControlName="title"
+            #titlebox />
+        <textarea class="form-control" rows="12" placeholder="Paste your content here..." formControlName="text"
+            #textbox></textarea>
+        <br />
+        <re-captcha (resolved)="grc_resolved($event)" siteKey="6LeWS8ciAAAAAGjDOhR7rMpcXLfITm6i8a81gV2Y"></re-captcha>
+        <br />
+        <button type="button" [disabled]="!this.form.valid" [ngClass]="this.submit_btn_classes"
+            (click)="this.savePaste()">Submit</button>
+        <div *ngIf="this.error.error" class="error mt-2">
+            <span><i class="bi bi-exclamation-circle-fill"></i> {{ this.error.message }}</span>
+        </div>
+    </form>
+    <!-- <app-latest-sidebar class="d-flex flex-column"></app-latest-sidebar> -->
+</div>
