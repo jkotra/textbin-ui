@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Observable } from 'rxjs';
 import Paste from 'src/models/Paste';
 import { PasteService } from '../services/paste.service';
 
@@ -9,12 +10,12 @@ import { PasteService } from '../services/paste.service';
 })
 export class LatestComponent {
 
-  latest_pastes: Paste[] = []
+  latest_pastes$: Observable<Paste[]> | undefined;
 
   constructor(private ps: PasteService) { }
 
   ngOnInit(): void {
-    this.ps.latest().subscribe(v => { this.latest_pastes = v })
+    this.latest_pastes$ = this.ps.latest()
   }
 
   wrap(text: string): string {
