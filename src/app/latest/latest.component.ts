@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import Paste from 'src/models/Paste';
 import { PasteService } from '../services/paste.service';
@@ -10,12 +11,14 @@ import { PasteService } from '../services/paste.service';
 })
 export class LatestComponent {
 
-  latest_pastes$: Observable<Paste[]> | undefined;
+  latest_pastes: Paste[] = [];
 
-  constructor(private ps: PasteService) { }
+  constructor(private activatedR: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.latest_pastes$ = this.ps.latest()
+    this.activatedR.data.subscribe(
+      (v) => { this.latest_pastes = v?.["paste"] }
+    )
   }
 
   wrap(text: string): string {
