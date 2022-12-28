@@ -1,4 +1,5 @@
 import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import Paste from 'src/models/Paste';
@@ -13,7 +14,9 @@ export class LatestComponent {
 
   latest_pastes: Paste[] = [];
 
-  constructor(private activatedR: ActivatedRoute) { }
+  constructor(private activatedR: ActivatedRoute, private title: Title) {
+    title.setTitle("TextBin - Latest Pastes");
+  }
 
   ngOnInit(): void {
     this.activatedR.data.subscribe(
@@ -22,7 +25,7 @@ export class LatestComponent {
   }
 
   wrap(text: string): string {
-    return text.substring(0, 40) + "..."
+    return text.length < 40 ? text : text.substring(0, 40) + "..."
   }
 
 }

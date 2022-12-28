@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import Paste from 'src/models/Paste';
 import { PasteService } from '../services/paste.service';
@@ -17,12 +18,13 @@ export class HomeComponent {
   error = { error: false, message: "Error" }
   grc_key = "6LeWS8ciAAAAAGjDOhR7rMpcXLfITm6i8a81gV2Y";
 
-  constructor(private ps: PasteService, private fb: UntypedFormBuilder, private router: Router) {
+  constructor(private ps: PasteService, private fb: UntypedFormBuilder, private router: Router, private title: Title) {
     this.form = this.fb.group({
       title: ['', [Validators.required]],
       text: ['', [Validators.required]],
       captcha: ['', Validators.required]
-    })
+    });
+    title.setTitle('TextBin - Home');
   }
 
   ngOnInit(): void {
