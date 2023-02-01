@@ -22,4 +22,8 @@ export class PasteService {
     return this.http.get<Array<Paste>>("/api/latest")
   }
 
+  delete(uuid: string, deletekey: string): Observable<any> {
+    return this.http.get(`/api/delete/${uuid}?key=${deletekey}`)
+  }
+
 }

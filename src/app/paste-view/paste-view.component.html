@@ -2,18 +2,20 @@
     <h2>{{ paste_content.title }}</h2>
     <p class="date">Posted At: {{ this.getDate() }}</p>
     <div>
-        <textarea class="form-control" rows="16" [value]="paste_content.text" disabled>
+        <textarea class="form-control" rows="16" id="content" [value]="paste_content.text" readonly>
         </textarea>
+        <br />
+        <button type="button" class="btn btn-secondary" data-clipboard-target="#content"><i
+                class="bi bi-clipboard-fill"></i> Copy to Clipboard!</button>
     </div>
     <div *ngIf="this.paste_content.deletekey !== ''" class="alert alert-danger mt-4" role="alert">
         <div>
             <h3><i class="bi bi-exclamation-square-fill"></i> NOTICE</h3>
             <hr />
         </div>
-        <p>You can delete this Paste using the link below. This Action <b>CANNOT BE UNDONE</b>.</p>
-        <br />
-        <code>
-            {{ this.host + "/api/delete/" + this.paste_content.uuid + "?key=" + this.paste_content.deletekey }}
-        </code>
+        <p>You can delete this Paste by pressing the button below. This Action <b>CANNOT BE UNDONE</b>.</p>
+        <div>
+            <a type="button" (click)="this.deletePaste()" class="btn btn-warning">Delete!</a>
+        </div>
     </div>
 </div>
