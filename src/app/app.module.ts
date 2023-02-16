@@ -13,6 +13,7 @@ import { PasteViewComponent } from './paste-view/paste-view.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { ReactiveFormsModule } from '@angular/forms';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
     RecaptchaModule,
-    RecaptchaFormsModule
+    RecaptchaFormsModule,
+    GraphQLModule
   ],
   providers: [],
   bootstrap: [AppComponent]
